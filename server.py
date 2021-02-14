@@ -38,3 +38,6 @@ def get_detection():
     return { 'score': round(np.sum(target_transformed) / 255 / (mask_width * mask_height) * 100), 'path': current_snapshot[15:] }
   except Exception as e:
     return str(e)
+
+if __name__ == '__main__':
+  app.run(debug=True, host='0.0.0.0')
