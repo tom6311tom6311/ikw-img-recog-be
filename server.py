@@ -15,9 +15,13 @@ CORS(app)
 def get_snapshot():
   try:
     path = request.args.get('path')
-    return send_file(f'data/snapshots/{path}')
+    if (not path):
+      return send_file(f'data/snapshots/default.jpg')
+    else:
+      return send_file(f'data/snapshots/{path}')
   except Exception as e:
-    return str(e)
+    print(str(e))
+    return send_file(f'data/snapshots/default.jpg')
 
 @app.route('/detection')
 def get_detection():
